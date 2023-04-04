@@ -16,12 +16,12 @@ class _loginwithphonenumberState extends State<loginwithphonenumber> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffa28089),
+      backgroundColor: Color(0xff023047),
       appBar: AppBar(
 automaticallyImplyLeading: false,
         title: Center(child: Text('Phone verification')),
 
-        backgroundColor: Colors.brown,
+        backgroundColor: Color(0xff05668d),
       ),
 
       body: SingleChildScrollView(
@@ -41,10 +41,11 @@ automaticallyImplyLeading: false,
 
               hintText: '+ 92 33 05 54 95 0 87',
               hintStyle: TextStyle(fontSize: 14),
+              labelStyle: TextStyle(color: Colors.white),
               fillColor: Colors.white.withOpacity(0.3),
               enabledBorder: OutlineInputBorder(
                 borderSide:
-                BorderSide(color: Colors.grey),
+                BorderSide(color: Colors.white),
                 borderRadius: BorderRadius.circular(50),
 
 
@@ -81,15 +82,15 @@ automaticallyImplyLeading: false,
                     child:
                     Text(
                       'login',
-                      style: TextStyle(color: Colors.black,fontSize: 15),
+                      style: TextStyle(color: Colors.white,fontSize: 15),
                     )),
                 height: 50,
                 width: 300,
                 decoration: BoxDecoration(
-                color: Colors.yellow,
+                color: Color(0xff05668d),
                     borderRadius: BorderRadius.circular(50),
                     border: Border.all(
-                        color: Colors.yellow
+                        color: Color(0xff05668d),
                     )
                 ),
               ),

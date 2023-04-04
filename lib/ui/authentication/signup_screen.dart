@@ -23,7 +23,7 @@ class _signupState extends State<signup> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: Color(0xffa28089),
+          backgroundColor: Color(0xff023047),
           body: Padding(
               padding: EdgeInsets.all(15),
               child: SingleChildScrollView(
@@ -48,7 +48,7 @@ class _signupState extends State<signup> {
                                   border: OutlineInputBorder(),
                                   labelText: 'Name',
                                   hintText: 'Enter Your Name',
-                                  labelStyle: TextStyle(color: Colors.black),
+                                  labelStyle: TextStyle(color: Colors.white),
                                   prefixIcon: Icon(Icons.person),
                                   hintStyle: TextStyle(fontSize: 14),
                                   fillColor: Colors.black,
@@ -73,7 +73,7 @@ class _signupState extends State<signup> {
                                   border: OutlineInputBorder(),
                                   labelText: 'Email',
                                   hintText: 'Enter Your Email',
-                                  labelStyle: TextStyle(color: Colors.black),
+                                  labelStyle: TextStyle(color: Colors.white),
                                   prefixIcon: Icon(Icons.email),
                                   hintStyle: TextStyle(fontSize: 14),
                                   fillColor: Colors.black,
@@ -99,7 +99,7 @@ class _signupState extends State<signup> {
                                   border: OutlineInputBorder(),
                                   labelText: 'Password',
                                   hintText: 'Enter Password',
-                                  labelStyle: TextStyle(color: Colors.black),
+                                  labelStyle: TextStyle(color: Colors.white),
                                   hintStyle: TextStyle(fontSize: 14),
                                   prefixIcon: Icon(Icons.lock),
                                   fillColor: Colors.black,
@@ -146,6 +146,7 @@ class _signupState extends State<signup> {
                           });
                         }
                       },
+
                       child: Container(
                         child: Center(
                             child: Loading
@@ -155,13 +156,13 @@ class _signupState extends State<signup> {
                                   )
                                 : Text(
                                     'Signup',
-                                    style: TextStyle(color: Colors.black),
+                                    style: TextStyle(color: Colors.white),
                                   )),
                         height: 40,
-                        width: 100,
+                        width: 150,
                         decoration: BoxDecoration(
-                          color: Colors.yellowAccent,
-                          borderRadius: BorderRadius.circular(10),
+                          color: Color(0xff05668d),
+                          borderRadius: BorderRadius.circular(50),
                         ),
                       ),
                     ),

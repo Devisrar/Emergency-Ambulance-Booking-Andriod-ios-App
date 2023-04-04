@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fyp/Aboutus/aboutapp.dart';
 import 'package:fyp/firebaseservices/splashservices.dart';
 import 'package:fyp/ui/authentication/login_withphonenumber.dart';
 import 'package:fyp/ui/post_screens/postscreen.dart';
@@ -31,8 +32,7 @@ class _loginscreenState extends State<loginscreen> {
             email: emailController.text.toString(),
             password: passwordController.text.toString())
         .then((value) {
-      setState(() {
-        Loading = false;
+      setState(() {        Loading = false;
       });
       utilities().toastmessage(value.user!.email.toString());
       Navigator.push(
@@ -55,7 +55,7 @@ class _loginscreenState extends State<loginscreen> {
           return true;
         },
         child: Scaffold(
-            backgroundColor: Color(0xffa28089),
+            backgroundColor: Color(0xff023047),
             body: Padding(
                 padding: EdgeInsets.all(15),
                 child: SingleChildScrollView(
@@ -75,7 +75,7 @@ class _loginscreenState extends State<loginscreen> {
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(),
                                     labelText: 'Email',
-                                    labelStyle: TextStyle(color: Colors.black),
+                                    labelStyle: TextStyle(color: Colors.white),
                                     hintText: 'Enter Your Email',
                                     prefixIcon: Icon(Icons.email),
                                     hintStyle: TextStyle(fontSize: 14),
@@ -106,7 +106,7 @@ class _loginscreenState extends State<loginscreen> {
                                     border: OutlineInputBorder(),
                                     labelText: 'Password',
                                     hintText: 'Enter Password',
-                                    labelStyle: TextStyle(color: Colors.black),
+                                    labelStyle: TextStyle(color: Colors.white),
                                     hintStyle: TextStyle(fontSize: 14),
                                     prefixIcon: Icon(Icons.lock),
                                     fillColor: Colors.black,
@@ -146,12 +146,12 @@ class _loginscreenState extends State<loginscreen> {
                                     )
                                   : Text(
                                       'Login',
-                                      style: TextStyle(color: Colors.black),
+                                      style: TextStyle(color: Colors.white),
                                     )),
                           height: 40,
                           width: 150,
                           decoration: BoxDecoration(
-                            color: Colors.yellowAccent,
+                            color: Color(0xff05668d),
                             borderRadius: BorderRadius.circular(50),
                           ),
                         ),
@@ -197,16 +197,16 @@ class _loginscreenState extends State<loginscreen> {
                               child: Text(
                             'Login with phone',
                             style: TextStyle(
-                                color: Colors.black,
+                                color: Colors.white,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15),
                           )),
                           height: 50,
                           width: 300,
                           decoration: BoxDecoration(
-                              color: Colors.yellowAccent,
+                              color: Color(0xff05668d),
                               borderRadius: BorderRadius.circular(50),
-                              border: Border.all(color: Colors.yellow)),
+                              border: Border.all(color: Color(0xff05668d),)),
                         ),
                       ),
                     ],

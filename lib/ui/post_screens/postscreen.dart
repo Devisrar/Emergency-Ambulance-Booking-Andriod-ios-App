@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:fyp/Rateus/rateus.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp/Aboutus/aboutapp.dart';
@@ -17,16 +19,13 @@ class postscreen extends StatefulWidget {
 class _postscreenState extends State<postscreen> {
   final auth = FirebaseAuth.instance;
 
-
-
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xff363115),
+        backgroundColor: Color(0xff023047),
         drawer: Drawer(
-          backgroundColor: Color(0xff898CBB),
+          backgroundColor: Color(0xff023047),
           child: ListView(
             children: [
               UserAccountsDrawerHeader(
@@ -34,12 +33,11 @@ class _postscreenState extends State<postscreen> {
                 accountEmail: Text('israr.exs@gmail.com'),
                 currentAccountPicture: CircleAvatar(
                   child: Text('I'),
-                  backgroundColor: Color(0xff105057),
+                  backgroundColor: Color(0xff023047),
                 ),
               ),
               ListTile(
                 leading: InkWell(
-
                   child: Icon(
                     Icons.share_sharp,
                     color: Colors.brown,
@@ -126,9 +124,9 @@ class _postscreenState extends State<postscreen> {
           ),
         ),
         appBar: AppBar(
-          backgroundColor: Colors.pink.shade400,
+          backgroundColor: Color(0xff023047),
           toolbarHeight: 100,
-          elevation: 14,
+          elevation: 0,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(70),
@@ -143,10 +141,17 @@ class _postscreenState extends State<postscreen> {
                   height: 40,
                   width: 40,
                   alignment: Alignment.center,
-                  decoration: BoxDecoration(boxShadow: [
-                    BoxShadow(
-                        blurRadius: 7, spreadRadius: 3, color: Colors.pink)
-                  ], shape: BoxShape.circle, color: Colors.pink),
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 7,
+                        spreadRadius: 3,
+                        color: Color(0xff023047),
+                      )
+                    ],
+                    shape: BoxShape.circle,
+                    color: Color(0xff023047),
+                  ),
                   child: Icon(
                     Icons.search,
                     size: 20,
@@ -159,10 +164,17 @@ class _postscreenState extends State<postscreen> {
                   height: 40,
                   width: 40,
                   alignment: Alignment.center,
-                  decoration: BoxDecoration(boxShadow: [
-                    BoxShadow(
-                        blurRadius: 7, spreadRadius: 3, color: Colors.pink)
-                  ], shape: BoxShape.circle, color: Colors.pink.shade400),
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 7,
+                        spreadRadius: 3,
+                        color: Color(0xff023047),
+                      )
+                    ],
+                    shape: BoxShape.circle,
+                    color: Color(0xff023047),
+                  ),
                   child: Icon(
                     Icons.notifications,
                     size: 20,
@@ -175,13 +187,32 @@ class _postscreenState extends State<postscreen> {
                   height: 40,
                   width: 40,
                   alignment: Alignment.center,
-                  decoration: BoxDecoration(boxShadow: [
-                    BoxShadow(
-                        blurRadius: 7, spreadRadius: 3, color: Colors.pink)
-                  ], shape: BoxShape.circle, color: Colors.pink.shade400),
-                  child: Icon(
-                    Icons.logout,
-                    size: 20,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 7,
+                        spreadRadius: 3,
+                        color: Color(0xff023047),
+                      )
+                    ],
+                    shape: BoxShape.circle,
+                    color: Color(0xff023047),
+                  ),
+                  child: IconButton(
+                    onPressed: () {
+                      auth.signOut().then((value) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => loginscreen())).onError((error, stackTrace){
+                                  utilities().toastmessage(error.toString());
+                        });
+                      });
+                    },
+                    icon: Icon(
+                      Icons.logout,
+                      size: 20,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -274,14 +305,12 @@ class _postscreenState extends State<postscreen> {
               ),
             ),
             new Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Text(
-                'More with Zindagi Muhafiz',
-                style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
-              ),
+              padding: const EdgeInsets.all(14),
+              child: Text('More with Zindagi Muhafiz',
+                  style: GoogleFonts.aBeeZee(
+                      fontSize: 20,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold)),
             ),
             // Container(
             //   height: 80.0,
@@ -438,103 +467,181 @@ class _postscreenState extends State<postscreen> {
             //     )
             //   ],
             // )
-
+//edr sy code krna ha
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(12),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Services(),
-
                 ],
               ),
-
             ),
-            SizedBox(height: 3,),
-    Padding(
-    padding: const EdgeInsets.all(12),
-    child: Card(
-
-    child: Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    crossAxisAlignment: CrossAxisAlignment.center,
-    children: [
-    Container(
-    decoration: BoxDecoration(
-    shape: BoxShape.rectangle,
-    color: Colors.grey,
-    borderRadius: BorderRadius.circular(20)),
-    height: 90,
-    width: 100,
-    child: Center(
-    child: Text(
-    'Bookme',
-    style: TextStyle(
-    color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),
-    )),
-    ),
-    SizedBox(width: 27,),
-    Container(
-    decoration: BoxDecoration(
-    shape: BoxShape.rectangle,
-    color: Colors.grey,
-    borderRadius: BorderRadius.circular(20)),
-    height: 90,
-    width: 100,
-    child: Center(
-    child: Text(
-    'Donate us',
-    style: TextStyle(
-    color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),
-    )),
-    ),
-    SizedBox(width: 27,),
-    Container(
-    decoration: BoxDecoration(
-    shape: BoxShape.rectangle,
-    color: Colors.grey,
-    borderRadius: BorderRadius.circular(20)),
-    height: 90,
-    width: 100,
-    child: Center(
-    child: Text(
-    'Rate us',
-    style: TextStyle(
-    color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),
-    )),
-    ),
-
-
-
-    ],
-
-    ),
-    ),
-
-
-    ),
-
-            SizedBox(height: 5,),
+            SizedBox(
+              height: 3,
+            ),
             Padding(
-              padding: const EdgeInsets.all(18),
-              child: Container(
-                decoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    color: Color(0xffDECC57),
-                    borderRadius: BorderRadius.circular(20)),
-                height: 50,
-                width: 50,
-
-                child: Center(
-                    child: Text(
-                      'Swipe next',
-                      style: TextStyle(
-                          color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),
-                    )),
+              padding: const EdgeInsets.all(12),
+              child: Card(
+                color: Color(0xff023047),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          shape: BoxShape.rectangle,
+                          color: Color(0xffaec3b0),
+                          borderRadius: BorderRadius.circular(20)),
+                      height: 90,
+                      width: 100,
+                      child: Center(
+                          child: Text(
+                        'Bookme',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold),
+                      )),
+                    ),
+                    SizedBox(
+                      width: 27,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          shape: BoxShape.rectangle,
+                          color: Color(0xffaec3b0),
+                          borderRadius: BorderRadius.circular(20)),
+                      height: 90,
+                      width: 100,
+                      child: Center(
+                          child: Text(
+                        'Donate us',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold),
+                      )),
+                    ),
+                    SizedBox(
+                      width: 27,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          shape: BoxShape.rectangle,
+                          color: Color(0xffaec3b0),
+                          borderRadius: BorderRadius.circular(20)),
+                      height: 90,
+                      width: 100,
+                      child: Center(
+                        child: Text('Rate us',
+                            style: GoogleFonts.aBeeZee(
+                                fontSize: 20,
+                                color: Color(0xff22223b),
+                                fontWeight: FontWeight.bold)),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
 
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: FloatingActionButton.extended(
+                label: Text('Swipe down',
+                    style: GoogleFonts.aBeeZee(
+                        fontSize: 18,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold)), // <-- Text
+                backgroundColor: Color(0xff05668d),
+                icon: Icon(
+                  Icons.expand_circle_down,
+                  color: Colors.white,
+                  size: 26.0,
+                ),
+                onPressed: () {},
+              ),
+            ),
+SizedBox(height: 5,),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text('Discover More Medikits',
+                  style: GoogleFonts.aBeeZee(
+                      fontSize: 18,
+                      color: Colors.white,
+                      fontWeight: FontWeight.normal)),
+            ),
+            SizedBox(height: 5,),
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: Card(
+                color: Color(0xff023047),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          shape: BoxShape.rectangle,
+                          color: Color(0xffaec3b0),
+                          borderRadius: BorderRadius.circular(20)),
+                      height: 50,
+                      width: 100,
+                      child: Center(
+                          child: IconButton(
+                            onPressed: (){
+
+                            },
+                            icon: Icon(Icons.add_card_sharp,color: Colors.black,),
+                          )),
+                    ),
+                    SizedBox(
+                      width: 27,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          shape: BoxShape.rectangle,
+                          color: Color(0xffaec3b0),
+                          borderRadius: BorderRadius.circular(20)),
+                      height: 50,
+                      width: 100,
+                      child: Center(
+                            child: IconButton(
+    onPressed: (){
+
+    },
+    icon: Icon(Icons.accessibility_rounded,color: Colors.black,),
+    )),
+                    ),
+                    SizedBox(
+                      width: 27,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          shape: BoxShape.rectangle,
+                          color: Color(0xffaec3b0),
+                          borderRadius: BorderRadius.circular(20)),
+                      height: 50,
+                      width: 100,
+                      child: Center(
+                        child: IconButton(
+                          onPressed: (){
+
+                          },
+                          icon: Icon(Icons.more_horiz,color: Colors.black,),
+                        )
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            //edr tk
           ],
         ),
       ),
@@ -550,71 +657,75 @@ class Services extends StatefulWidget {
 }
 
 class _ServicesState extends State<Services> {
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(12),
-      child: Card(
-
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.circular(20)),
-              height: 90,
-              width: 100,
-              child: Center(
-                  child: Text(
-                'Location',
-                style: TextStyle(
-                    color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),
-              )),
-            ),
-            SizedBox(width: 27,),
-            Container(
-              decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.circular(20)),
-              height: 90,
-              width: 100,
-              child: Center(
-                  child: Text(
-                    'Drivers',
-                    style: TextStyle(
-                        color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),
-                  )),
-            ),
-            SizedBox(width: 27,),
-            Container(
-              decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.circular(20)),
-              height: 90,
-              width: 100,
-              child: Center(
-                  child: Text(
-                    'Payments',
-                    style: TextStyle(
-                        color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),
-                  )),
-            ),
-
-
-
-          ],
-
+      child: SingleChildScrollView(
+        child: Card(
+          color: Color(0xff023047),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    color: Color(0xffaec3b0),
+                    borderRadius: BorderRadius.circular(20)),
+                height: 90,
+                width: 100,
+                child: Center(
+                    child: Text(
+                  'Location',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold),
+                )),
+              ),
+              SizedBox(
+                width: 27,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    color: Color(0xffaec3b0),
+                    borderRadius: BorderRadius.circular(20)),
+                height: 90,
+                width: 100,
+                child: Center(
+                    child: Text(
+                  'Drivers',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold),
+                )),
+              ),
+              SizedBox(
+                width: 27,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    color: Color(0xffaec3b0),
+                    borderRadius: BorderRadius.circular(20)),
+                height: 90,
+                width: 100,
+                child: Center(
+                    child: Text(
+                  'Payments',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold),
+                )),
+              ),
+            ],
+          ),
         ),
       ),
-
-
     );
   }
 }
-
